@@ -4,13 +4,13 @@
 
 ## 1. Thông tin học viên
 
-- **Họ và tên:**
-- **MSSV:**
+- **Họ và tên:** Nguyễn Hải Long
+- **MSSV:** 2A202602471
 - **Lớp:** K4-L3A
-- **Repository URL:**
-- **Commit SHA cuối:**
-- **Challenge ID:**
-- **Tên project Langfuse cá nhân:** `day13-k4-l3a-<MSSV>`
+- **Repository URL:** https://github.com/long27112003/K4-L3-DAY13-NguyenHaiLong-2A202602471-Monitoring-LLMOps
+- **Commit SHA cuối:** 13b606680ae4a3072eda90334959b632fe4ecba0
+- **Challenge ID:** TBD (đợi Lab Coach cấp ở CP3)
+- **Tên project Langfuse cá nhân:** `day13-k4-l3a-2A202602471`
 
 ## 2. Evidence index
 
@@ -37,13 +37,13 @@
 
 | Nội dung | Baseline | Kết quả cuối | Nhận xét |
 |---|---|---|---|
-| `validate_logs.py` | | | |
-| `validate_dashboard.py` | | | |
-| `pytest` | | | |
-| Số traces hợp lệ | | | |
-| Số PII leak | | | |
-| Latency P95 / TTFT P95 | | | |
-| Retrieval success rate | | | |
+| `validate_logs.py` | 30/100 | | Baseline chưa làm CP1 (thiếu correlation_id và context vars) |
+| `validate_dashboard.py` | HỢP LỆ (6/6 panel) | | Cấu hình dashboard đúng chuẩn contract |
+| `pytest` | 22 passed / 22 tests | | Bộ test ban đầu chạy thành công |
+| Số traces hợp lệ | 10 requests | | 10 request từ load test đã được tạo và trace |
+| Số PII leak | 0 | | Chưa phát hiện leak PII trong bộ test mẫu |
+| Latency P95 / TTFT P95 | 1140 ms / 50 ms | | Độ trễ baseline đo từ `data/logs.jsonl` |
+| Retrieval success rate | 100% | | 10/10 truy vấn retrieval thành công |
 
 ## 4. Logging và PII
 
