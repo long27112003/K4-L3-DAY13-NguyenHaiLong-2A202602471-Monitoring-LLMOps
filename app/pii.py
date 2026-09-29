@@ -3,19 +3,36 @@ from __future__ import annotations
 import hashlib
 import re
 
+
 PII_PATTERNS: dict[str, str] = {
     "email": r"[\w\.-]+@[\w\.-]+\.\w+",
     "phone_vn": r"(?<!\d)(?:\+84|0)(?:[ .-]?\d){9}(?!\d)",
     "cccd": r"\b\d{12}\b",
     "credit_card": r"\b\d{4}[- ]?\d{4}[- ]?\d{4}[- ]?\d{4}\b",
-    # TODO: Add more patterns (e.g., Passport, Vietnamese address keywords)
+
+    # Passport: dạng chữ cái + 7 chữ số
+    "passport": r"\b[A-Z][0-9]{7}\b",
+
+    # Vietnamese address keywords
+    "address_vn": (
+        r"\b(?:số|ngõ|ngách|hẻm|đường|phố|phường|xã|"
+        r"quận|huyện|thành phố|tỉnh)\s+"
+        r"[^,.;\n]{2,50}"
+    ),
 }
 
 
 def scrub_text(text: str) -> str:
     safe = text
+
     for name, pattern in PII_PATTERNS.items():
-        safe = re.sub(pattern, f"[REDACTED_{name.upper()}]", safe)
+        safe = re.sub(
+            pattern,
+            f"[REDACTED_{name.upper()}]",
+            safe,
+            flags=re.IGNORECASE,
+        )
+
     return safe
 
 
@@ -25,4 +42,6 @@ def summarize_text(text: str, max_len: int = 80) -> str:
 
 
 def hash_user_id(user_id: str) -> str:
-    return hashlib.sha256(user_id.encode("utf-8")).hexdigest()[:12]
+    return hashlib.sha256(
+        user_id.encode("utf-8")
+    ).hexdigest()[:12]
