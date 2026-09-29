@@ -7,7 +7,8 @@ primary_slo:
     total_event: 'event == "request_received"'
   target_percent: 99.5
   error_budget_percent: 0.5
-  note: Học viên phải giải thích hoặc điều chỉnh ngưỡng bằng baseline của mình.
+  error_budget_calculation: "28d * 24h * 60m * 0.5% = 201.6 minutes; equivalently 5 failed/slow requests per 1000 requests"
+  rationale: "The measured baseline P95 is about 1140 ms, so 3000 ms leaves headroom for normal variance while still detecting user-visible slowness. The 99.5% target permits a small, explicit budget without hiding sustained failures."
 guardrails:
   error_rate_pct_max: 2
   daily_cost_usd_max: 2.5

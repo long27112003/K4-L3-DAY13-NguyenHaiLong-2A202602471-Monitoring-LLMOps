@@ -1,0 +1,8 @@
+Command: python scripts/validate_logs.py
+Records analyzed: 9
+Basic JSON schema: PASSED
+Correlation ID propagation: PASSED (3 unique IDs)
+Log enrichment: PASSED
+PII scrubbing: PASSED
+Estimated score: 100/100
+Date: 2026-09-29 (Asia/Bangkok)
