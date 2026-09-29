@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>K4-L3A Day 13 Monitoring & LLMOps</title>
+<style>
+*{box-sizing:border-box} body{margin:0;background:#07111f;color:#e8eef7;font-family:Segoe UI,Arial,sans-serif}
+.wrap{max-width:1500px;margin:auto;padding:28px} header{display:flex;justify-content:space-between;align-items:end;margin-bottom:20px}
+h1{font-size:28px;margin:0 0 8px} .subtitle{color:#98a9bf} .badge{background:#17263a;border:1px solid #2b405a;padding:10px 14px;border-radius:10px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px} .panel{background:#101d2e;border:1px solid #243850;border-radius:14px;padding:20px;min-height:190px}
+.panel-head{display:flex;justify-content:space-between;gap:15px} h2{font-size:17px;margin:0;color:#c8d5e6} .unit{font-size:12px;color:#7f95ae}
+.value{font-size:38px;font-weight:700;margin:28px 0 8px} .detail{color:#9fb1c7;min-height:38px} .threshold{margin-top:18px;padding-top:12px;border-top:1px solid #263b54;font-size:12px;font-weight:600}
+.ok{color:#59d69b} .bad{color:#ff7285} footer{margin-top:18px;color:#7f95ae;font-size:12px} @media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}
+</style></head><body><div class="wrap">
+<header><div><h1>K4-L3A Day 13 Monitoring & LLMOps</h1><div class="subtitle">Runtime source: data/logs.jsonl · 6/6 required panels</div></div>
+<div class="badge">Time range: Last 60 minutes<br>Configured refresh interval: 30 seconds<br>Snapshot window end: 2026-09-29 17:12:14 SE Asia Standard Time</div></header>
+<main class="grid">
+    <section class="panel">
+      <div class="panel-head"><h2>Latency percentiles and TTFT</h2><span class="unit">ms</span></div>
+      <div class="value">P95 2654</div>
+      <div class="detail">P50 2652 · P99 2654 · TTFT P95 51</div>
+      <div class="threshold ok">WITHIN THRESHOLD: P95 ≤ 3000 ms</div>
+    </section>
+    
+    <section class="panel">
+      <div class="panel-head"><h2>Request traffic</h2><span class="unit">requests/min</span></div>
+      <div class="value">0.15</div>
+      <div class="detail">9 requests in the selected window</div>
+      <div class="threshold bad">THRESHOLD BREACHED: rate ≥ 1 request/min</div>
+    </section>
+    
+    <section class="panel">
+      <div class="panel-head"><h2>Error rate and retrieval success</h2><span class="unit">%</span></div>
+      <div class="value">Errors 0.0%</div>
+      <div class="detail">Retrieval success 100.0% · 0 failed requests</div>
+      <div class="threshold ok">WITHIN THRESHOLD: error rate ≤ 2% · retrieval ≥ 90%</div>
+    </section>
+    
+    <section class="panel">
+      <div class="panel-head"><h2>Cost over time</h2><span class="unit">USD</span></div>
+      <div class="value">$0.0181</div>
+      <div class="detail">Total across 9 responses</div>
+      <div class="threshold ok">WITHIN THRESHOLD: total ≤ $2.50</div>
+    </section>
+    
+    <section class="panel">
+      <div class="panel-head"><h2>Input and output tokens</h2><span class="unit">tokens</span></div>
+      <div class="value">1,470</div>
+      <div class="detail">Input 327 · Output 1,143</div>
+      <div class="threshold ok">WITHIN THRESHOLD: total ≤ 50,000</div>
+    </section>
+    
+    <section class="panel">
+      <div class="panel-head"><h2>Quality proxy</h2><span class="unit">score 0–1</span></div>
+      <div class="value">0.822</div>
+      <div class="detail">Mean across 9 scored responses</div>
+      <div class="threshold ok">WITHIN THRESHOLD: mean ≥ 0.75</div>
+    </section>
+    </main>
+<footer>Static runtime snapshot generated from 26 structured log records. Re-run scripts/generate_dashboard.py to refresh. Thresholds follow config/dashboard.yaml.</footer>
+</div></body></html>
